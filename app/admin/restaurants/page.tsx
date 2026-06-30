@@ -498,10 +498,11 @@ if (plan === "DASHBOARD") {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {restaurants.map((restaurant) => (
-            <Card key={restaurant.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <Card
+className="rounded-3xl border bg-white shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden">
               <CardContent className="p-0">
                 {/* Banner */}
-                <div className="h-24 bg-gradient-to-r from-primary/20 to-secondary/20 relative">
+               <div className="relative h-36 sm:h-40 overflow-hidden rounded-t-2xl bg-gradient-to-r from-primary/20 to-secondary/20">
                   {restaurant.banner_url && (
                     <img
                       src={restaurant.banner_url}
@@ -519,15 +520,15 @@ if (plan === "DASHBOARD") {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 -mt-8 relative">
+              <div className="px-5 pb-5 -mt-10 relative">
                   {/* Logo */}
-                  <div className="w-16 h-16 rounded-xl bg-card shadow-lg flex items-center justify-center overflow-hidden border-2 border-card mb-3">
+                 <div className="w-20 h-20 rounded-2xl shadow-xl border-4 border-white bg-white overflow-hidden flex items-center justify-center">
                     {restaurant.logo_url ? (
-                      <img
-                        src={restaurant.logo_url}
-                        alt={restaurant.name}
-                        className="w-full h-full object-cover"
-                      />
+                     <img
+  src={restaurant.logo_url}
+  alt={restaurant.name}
+  className="w-full h-full object-cover"
+/>
                     ) : (
                       <Store className="w-8 h-8 text-primary" />
                     )}
@@ -543,7 +544,7 @@ if (plan === "DASHBOARD") {
                   )}
 
                   {/* Status Badge */}
-                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium mb-4 ${restaurant.is_active
+                  <div className={`flex w-fit items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium mb-4 ${restaurant.is_active
                     ? "bg-green-100 text-green-700"
                     : "bg-gray-100 text-gray-600"
                     }`}>
@@ -553,7 +554,7 @@ if (plan === "DASHBOARD") {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2">
+                  <div className="grid grid-cols-3 gap-2 mt-5">
                     <Button asChild variant="outline" size="sm" className="flex-1">
                       <Link href={`/menu/${restaurant.id}`} target="_blank">
                         <Eye className="w-4 h-4 mr-1" />
