@@ -28,7 +28,7 @@ export default function AdminRestaurantsPage() {
   <div className="min-h-screen bg-gray-50 p-4">
 
     {/* HEADER */}
-    <div className="flex justify-between items-center mb-6">
+   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-8">
       <div>
         <h1 className="text-2xl font-bold">Restaurants</h1>
         <p className="text-gray-500 text-sm">
@@ -48,7 +48,7 @@ export default function AdminRestaurantsPage() {
     </div>
 
     {/* ACTION BAR */}
-    <div className="flex gap-3 mb-6">
+   <div className="flex flex-col sm:flex-row gap-4 mb-8">
      <button
   onClick={() => (window.location.href = "/admin/restaurants/new")}
   className="bg-blue-600 text-white px-5 py-2 rounded-xl shadow"
@@ -63,7 +63,7 @@ export default function AdminRestaurantsPage() {
     </div>
 
     {/* STATS */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
 
       <div className="bg-white p-4 rounded-xl shadow">
         <p className="text-gray-500 text-sm">Total</p>
@@ -96,11 +96,11 @@ export default function AdminRestaurantsPage() {
       {restaurants.map((r) => (
         <div
           key={r.id}
-          className="bg-white rounded-2xl shadow p-4 flex gap-4"
+         className="bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 p-5 flex flex-col lg:flex-row gap-5"
         >
 
           {/* IMAGE */}
-         <div className="relative w-28 h-28">
+         <div className="relative w-full lg:w-52 h-36 rounded-2xl overflow-hidden">
 
   {/* Banner */}
   <img
@@ -111,7 +111,7 @@ export default function AdminRestaurantsPage() {
   {/* Logo */}
   <img
     src={r.logo_url || "https://via.placeholder.com/80"}
-    className="w-12 h-12 rounded-xl absolute bottom-0 left-0 translate-y-1/2 border bg-white p-1"
+    className="w-16 h-16 rounded-2xl border-4 border-white shadow-lg rounded-xl absolute bottom-0 left-0 translate-y-1/2 border bg-white p-1"
   />
 
 </div>
