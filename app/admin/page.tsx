@@ -50,11 +50,11 @@ export default function AdminRestaurantsPage() {
     {/* ACTION BAR */}
     <div className="flex gap-3 mb-6">
      <button
-  onClick={() => (window.location.href = "/admin/restaurants/new")}
+  onClick={() => (window.location.href = "/admin/restaurants")}
   className="bg-blue-600 text-white px-5 py-2 rounded-xl shadow"
 >
-        + Add New Restaurant
-      </button>
+  Manage Restaurants
+</button>
 
       <input
         placeholder="Search restaurants..."
