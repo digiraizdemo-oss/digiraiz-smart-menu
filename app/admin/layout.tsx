@@ -15,6 +15,10 @@ import {
   X,
   LogOut,
   ChevronRight,
+  Bell,
+  Search,
+  Sparkles,
+  ShieldCheck,
 } from "lucide-react"
 
 const sidebarLinks = [
@@ -55,28 +59,41 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-sidebar-primary rounded-xl flex items-center justify-center">
-                <UtensilsCrossed className="w-5 h-5 text-sidebar-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="font-bold text-lg">DigiRaiz</h1>
-                <p className="text-xs text-sidebar-foreground/60">Smart Menu</p>
-              </div>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden text-sidebar-foreground hover:bg-sidebar-accent"
-              onClick={() => setSidebarOpen(false)}
-            >
-              <X className="w-5 h-5" />
-            </Button>
-          </div>
+         <div className="border-b border-sidebar-border p-6">
+  <div className="flex items-center gap-3">
+    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
+      <UtensilsCrossed className="h-6 w-6 text-white" />
+    </div>
 
+    <div>
+      <h1 className="text-xl font-bold tracking-tight">
+        DigiRaiz
+      </h1>
+
+      <p className="text-xs opacity-70">
+        Smart Menu
+      </p>
+    </div>
+  </div>
+
+  <div className="mt-5 rounded-xl bg-sidebar-accent p-3">
+    <div className="flex items-center gap-2">
+      <ShieldCheck className="h-4 w-4 text-green-500" />
+
+      <div>
+        <p className="text-sm font-semibold">
+          Super Admin
+        </p>
+
+        <p className="text-xs opacity-60">
+          Full Access
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
           {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-2">
+          <nav className="flex-1 px-4 py-6 space-y-2">
             {sidebarLinks.map((link) => {
               const isActive = pathname === link.href || 
                 (link.href !== "/admin" && pathname.startsWith(link.href))
@@ -86,10 +103,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   href={link.href}
                   onClick={() => setSidebarOpen(false)}
                   className={cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200",
+  "group flex items-center gap-3 rounded-2xl px-4 py-3 transition-all duration-300",
                     isActive
-                      ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
-                      : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-xl"
+                      : "hover:bg-sidebar-accent hover:translate-x-1 text-sidebar-foreground/80 hover:text-sidebar-foreground"
                   )}
                 >
                   <link.icon className="w-5 h-5" />
@@ -117,37 +134,85 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main content */}
       <div className="lg:ml-64">
         {/* Top navbar */}
-        <header className="sticky top-0 z-30 bg-card/80 backdrop-blur-md border-b border-border">
-          <div className="flex items-center justify-between px-4 h-16">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <Menu className="w-5 h-5" />
-            </Button>
-            <div className="lg:hidden flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <UtensilsCrossed className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="font-bold">DigiRaiz</span>
-            </div>
-            <div className="hidden lg:block">
-              <h2 className="text-lg font-semibold text-foreground">
-                {sidebarLinks.find(
-                  (l) => l.href === pathname || (l.href !== "/admin" && pathname.startsWith(l.href))
-                )?.label || "Admin"}
-              </h2>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground hidden sm:block">Super Admin</span>
-            </div>
-          </div>
-        </header>
+        <header className="sticky top-0 z-30 border-b bg-white/80 backdrop-blur-xl">
+  <div className="flex h-20 items-center justify-between px-8">
+
+    <div className="flex items-center gap-4">
+
+      <Button
+        variant="ghost"
+        size="icon"
+        className="lg:hidden"
+        onClick={() => setSidebarOpen(true)}
+      >
+        <Menu className="w-5 h-5" />
+      </Button>
+
+      <div>
+
+        <h2 className="text-2xl font-bold">
+          {sidebarLinks.find(
+            (l) =>
+              l.href === pathname ||
+              (l.href !== "/admin" &&
+                pathname.startsWith(l.href))
+          )?.label || "Dashboard"}
+        </h2>
+
+        <p className="text-sm text-muted-foreground">
+          Welcome back to DigiRaiz Smart Menu
+        </p>
+
+      </div>
+
+    </div>
+
+    <div className="flex items-center gap-4">
+
+      <div className="hidden lg:flex items-center gap-2 rounded-xl border bg-gray-50 px-4 py-2">
+
+        <Search className="h-4 w-4 text-gray-400" />
+
+        <input
+          placeholder="Search..."
+          className="bg-transparent outline-none text-sm w-48"
+        />
+
+      </div>
+
+      <Button variant="ghost" size="icon">
+        <Bell className="h-5 w-5" />
+      </Button>
+
+      <div className="flex items-center gap-3 rounded-2xl border bg-white px-4 py-2 shadow-sm">
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold">
+
+          SA
+
+        </div>
+
+        <div className="hidden md:block">
+
+          <p className="text-sm font-semibold">
+            Super Admin
+          </p>
+
+          <p className="text-xs text-muted-foreground">
+            Administrator
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</header>
 
         {/* Page content */}
-        <main className="p-4 md:p-6 lg:p-8">{children}</main>
+       <main className="bg-gray-50 min-h-screen p-6 lg:p-8">{children}</main>
       </div>
     </div>
   )
