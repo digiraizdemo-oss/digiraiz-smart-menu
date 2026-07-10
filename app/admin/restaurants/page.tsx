@@ -50,6 +50,7 @@ interface Restaurant {
   maps_url: string | null
   description: string | null
   is_active: boolean
+  plan_type: "QR" | "DASHBOARD"
   created_at: string
 }
 
@@ -210,22 +211,31 @@ if (plan === "DASHBOARD") {
     }
   }
 
-  const handleEdit = (restaurant: Restaurant) => {
-    setForm({
-      name: restaurant.name,
-      address: restaurant.address || "",
-      whatsapp: restaurant.whatsapp || "",
-      instagram: restaurant.instagram || "",
-      maps_url: restaurant.maps_url || "",
-      description: restaurant.description || "",
-      logo: null,
-      banner: null,
-    })
-    setLogoPreview(restaurant.logo_url)
-    setBannerPreview(restaurant.banner_url)
-    setEditingId(restaurant.id)
-    setDialogOpen(true)
-  }
+ const handleEdit = (restaurant: Restaurant) => {
+  setForm({
+    name: restaurant.name,
+    address: restaurant.address || "",
+    whatsapp: restaurant.whatsapp || "",
+    instagram: restaurant.instagram || "",
+    maps_url: restaurant.maps_url || "",
+    description: restaurant.description || "",
+    logo: null,
+    banner: null,
+  })
+
+  // Load the saved plan
+  setPlan(restaurant.plan_type || "QR")
+
+  // Clear login fields while editing
+  setEmail("")
+  setPassword("")
+
+  setLogoPreview(restaurant.logo_url)
+  setBannerPreview(restaurant.banner_url)
+
+  setEditingId(restaurant.id)
+  setDialogOpen(true)
+}
 
   const handleDelete = async () => {
     if (!deleteId) return

@@ -168,7 +168,7 @@ const handleLogout = async () => {
       {/* PREMIUM HERO */}
 <div className="bg-gradient-to-r from-blue-500 to-green-500 rounded-2xl p-5 text-white mb-4 flex justify-between items-center">
   <div>
-    <h2 className="text-lg font-semibold">Hello how are you Today?👋</h2>
+    <h2 className="text-lg font-semibold">Here's what's happening with your restaurant</h2>
     <p className="text-sm opacity-90">
       Here's what's happening with your restaurant
     </p>
@@ -177,40 +177,18 @@ const handleLogout = async () => {
 </div>
 
     {/* PREMIUM STATS */}
-<div className="grid grid-cols-2 gap-3 mb-4">
-
-  <div className="bg-white p-4 rounded-2xl shadow flex justify-between items-center">
+<div className="bg-white rounded-3xl p-5 shadow-lg">
+  <div className="flex items-center justify-between">
     <div>
-      <p className="text-xs text-gray-500">Total Orders</p>
-      <h2 className="text-xl font-bold">{totalOrders}</h2>
+      <p className="text-sm text-gray-500">Total Orders</p>
+      <h2 className="text-3xl font-bold mt-1">{totalOrders}</h2>
+      <p className="text-green-600 text-xs mt-2">↑ Today</p>
     </div>
-    <div className="bg-blue-100 p-2 rounded-full">📋</div>
-  </div>
 
-  <div className="bg-white p-4 rounded-2xl shadow flex justify-between items-center">
-    <div>
-      <p className="text-xs text-gray-500">Pending</p>
-      <h2 className="text-xl font-bold text-orange-500">{pending}</h2>
+    <div className="h-14 w-14 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl">
+      📦
     </div>
-    <div className="bg-orange-100 p-2 rounded-full">⏳</div>
   </div>
-
-  <div className="bg-white p-4 rounded-2xl shadow flex justify-between items-center">
-    <div>
-      <p className="text-xs text-gray-500">Preparing</p>
-      <h2 className="text-xl font-bold text-green-500">{preparing}</h2>
-    </div>
-    <div className="bg-green-100 p-2 rounded-full">🍳</div>
-  </div>
-
-  <div className="bg-white p-4 rounded-2xl shadow flex justify-between items-center">
-    <div>
-      <p className="text-xs text-gray-500">Revenue</p>
-      <h2 className="text-xl font-bold">₹{revenue}</h2>
-    </div>
-    <div className="bg-purple-100 p-2 rounded-full">💰</div>
-  </div>
-
 </div>
 
    {/* LIVE ORDERS */}
@@ -290,167 +268,66 @@ const handleLogout = async () => {
 
 </div>
 {/* QUICK ACTIONS */}
-<div className="bg-white rounded-2xl p-4 shadow mb-4">
-  <h3 className="font-semibold mb-3">Quick Actions</h3>
+<div className="grid grid-cols-2 gap-4">
 
-  <div className="grid grid-cols-4 gap-3 text-center text-xs">
-    <div className="bg-blue-100 p-3 rounded-xl">📋<br/>Menu</div>
-    <div className="bg-green-100 p-3 rounded-xl">🧾<br/>Orders</div>
-    <div className="bg-orange-100 p-3 rounded-xl">📊<br/>Reports</div>
-    <div className="bg-purple-100 p-3 rounded-xl">⚙️<br/>Settings</div>
-  </div>
-</div>
-{/* SALES OVERVIEW */}
-<div className="bg-white rounded-2xl p-4 shadow mb-4">
-  <div className="flex justify-between items-center mb-3">
-    <div>
-      <h3 className="font-semibold">Sales Overview</h3>
-      <p className="text-xs text-green-500">↑ 18.6%</p>
+  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+    <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl mb-4">
+      🍔
     </div>
 
-    <select className="text-xs border rounded-lg px-2 py-1">
-      <option>This Week</option>
-      <option>This Month</option>
-    </select>
-  </div>
+    <h3 className="font-semibold">
+      Menu
+    </h3>
 
-  <div className="mb-3">
-    <p className="text-xs text-gray-500">Total Sales</p>
-    <h2 className="text-xl font-bold">₹{revenue}</h2>
-    <p className="text-xs text-gray-400">
-      From {orders.length} orders
+    <p className="text-sm text-gray-500">
+      Manage Food Items
     </p>
-  </div>
+  </button>
 
-  {/* SIMPLE GRAPH LINE */}
-  <div className="h-24 flex items-end gap-2">
-    {[40, 60, 30, 80, 70, 90, 50].map((h, i) => (
-      <div
-        key={i}
-        className="bg-blue-500 rounded-full w-2"
-        style={{ height: `${h}%` }}
-      />
-    ))}
-  </div>
-
-  <div className="flex justify-between text-xs text-gray-400 mt-2">
-    <span>Mon</span>
-    <span>Tue</span>
-    <span>Wed</span>
-    <span>Thu</span>
-    <span>Fri</span>
-    <span>Sat</span>
-    <span>Sun</span>
-  </div>
-</div>
-{/* ORDER DETAILS POPUP */}
-{showOrderPopup && selectedOrder && (
-  <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-
-    <div className="bg-white rounded-3xl w-full max-w-md p-5 relative">
-
-      {/* CLOSE */}
-      <button
-        onClick={() => setShowOrderPopup(false)}
-        className="absolute top-4 right-4 text-2xl text-gray-400"
-      >
-        ×
-      </button>
-
-      {/* TITLE */}
-      <h2 className="text-xl font-bold mb-4">
-        Order Details
-      </h2>
-
-      {/* INFO */}
-      <div className="space-y-1 mb-4">
-
-        <p>
-          <span className="font-semibold">
-            Customer:
-          </span>{" "}
-          {selectedOrder.customer_name || "Guest"}
-        </p>
-
-        <p>
-          <span className="font-semibold">
-            Table:
-          </span>{" "}
-          {selectedOrder.table_number}
-        </p>
-
-        <p>
-          <span className="font-semibold">
-            Status:
-          </span>{" "}
-          {selectedOrder.status}
-        </p>
-
-      </div>
-
-      {/* ITEMS */}
-      <div className="space-y-3 max-h-[320px] overflow-y-auto">
-
-        {(selectedOrder.items || []).map(
-          (item: any, index: number) => (
-            <div
-              key={index}
-              className="border rounded-2xl p-3 flex gap-3 items-center"
-            >
-
-              <img
-                src={
-                  item.image_url ||
-                  "/placeholder.png"
-                }
-                className="w-16 h-16 rounded-xl object-cover border"
-              />
-
-              <div className="flex-1">
-
-                <h3 className="font-semibold text-sm">
-                  {item.name}
-                </h3>
-
-                <p className="text-xs text-gray-500">
-                  Quantity : {item.quantity}
-                </p>
-
-                <p className="text-xs text-gray-500">
-                  Price : ₹{item.price}
-                </p>
-
-                {item.note && (
-                  <p className="text-xs text-orange-500 mt-1">
-                    Note : {item.note}
-                  </p>
-                )}
-
-              </div>
-            </div>
-          )
-        )}
-
-      </div>
-
-      {/* TOTAL */}
-      <div className="flex justify-between items-center mt-5 pt-4 border-t">
-
-        <span className="font-bold text-lg">
-          Total
-        </span>
-
-        <span className="font-bold text-2xl">
-          ₹{selectedOrder.total_price}
-        </span>
-
-      </div>
-
+  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+    <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-4">
+      📋
     </div>
 
-  </div>
-)}
-   {/* POWERED */}
+    <h3 className="font-semibold">
+      Orders
+    </h3>
+
+    <p className="text-sm text-gray-500">
+      Live Orders
+    </p>
+  </button>
+
+  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+    <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-2xl mb-4">
+      📈
+    </div>
+
+    <h3 className="font-semibold">
+      Reports
+    </h3>
+
+    <p className="text-sm text-gray-500">
+      Sales Analytics
+    </p>
+  </button>
+
+  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+    <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center text-2xl mb-4">
+      ⚙️
+    </div>
+
+    <h3 className="font-semibold">
+      Settings
+    </h3>
+
+    <p className="text-sm text-gray-500">
+      Restaurant Settings
+    </p>
+  </button>
+
+</div>  
+{/* POWERED */}
 <div className="fixed bottom-14 left-0 right-0 text-center opacity-70">
   <p className="text-xs text-gray-500">
     Powered by{" "}
