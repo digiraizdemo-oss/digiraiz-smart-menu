@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DigiRaiz Restaurant</string>
+    <string name="title_activity_main">DigiRaiz Restaurant</string>
+    <string name="package_name">com.digiraiz.restaurant</string>
+    <string name="custom_url_scheme">com.digiraiz.restaurant</string>
+</resources>
