@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 
-export default function AdminRestaurantsPage() {
+export default function AdminDashboardPage() {
   const supabase = createClient()
 
   const [restaurants, setRestaurants] = useState<any[]>([])
@@ -27,25 +27,44 @@ export default function AdminRestaurantsPage() {
   return (
   <div className="min-h-screen bg-gray-50 p-4">
 
-    {/* HEADER */}
-    <div className="flex justify-between items-center mb-6">
+  {/* HEADER */}
+<div className="mb-8">
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+
+    <div>
+      <p className="text-blue-600 font-semibold text-sm">
+        👋 Welcome Back
+      </p>
+
+      <h1 className="text-3xl md:text-4xl font-bold mt-1">
+        Super Admin Dashboard
+      </h1>
+
+      <p className="text-gray-500 mt-2">
+        Manage restaurants, menus and QR codes
+      </p>
+    </div>
+
+    <div className="bg-white rounded-3xl shadow-lg px-6 py-4 flex items-center gap-4">
+      <div className="text-4xl">🏬</div>
+
       <div>
-        <h1 className="text-2xl font-bold">Restaurants</h1>
-        <p className="text-gray-500 text-sm">
-          Manage and monitor all restaurant listings
+        <p className="text-sm text-gray-500">
+          Total Restaurants
+        </p>
+
+        <p className="text-2xl font-bold">
+          {restaurants.length}
+        </p>
+
+        <p className="text-green-600 text-sm font-semibold">
+          Active Restaurants
         </p>
       </div>
-
-      <div className="bg-white px-5 py-3 rounded-xl shadow flex items-center gap-3">
-        <div className="text-blue-500 text-xl">🏬</div>
-        <div>
-          <p className="text-sm text-gray-500">Total Restaurants</p>
-          <p className="font-bold text-lg">
-            {restaurants.length} <span className="text-green-500 text-sm">Active</span>
-          </p>
-        </div>
-      </div>
     </div>
+
+  </div>
+</div>
 
     {/* ACTION BAR */}
     <div className="flex gap-3 mb-6">
