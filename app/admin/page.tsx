@@ -24,88 +24,124 @@ export default function AdminDashboardPage() {
     fetchRestaurants()
   }
 
-  return (
-  <div className="min-h-screen bg-gray-50 p-4">
+return (
+<div className="min-h-screen bg-slate-50">
 
-  {/* HEADER */}
-<div className="mb-8">
-  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+  {/* Hero Header */}
+  <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 text-white rounded-b-[35px] shadow-xl">
 
-    <div>
-      <p className="text-blue-600 font-semibold text-sm">
-        👋 Welcome Back
-      </p>
+    <div className="max-w-7xl mx-auto px-5 py-8">
 
-      <h1 className="text-3xl md:text-4xl font-bold mt-1">
-        Super Admin Dashboard
-      </h1>
+      <div className="flex flex-col lg:flex-row justify-between gap-6">
 
-      <p className="text-gray-500 mt-2">
-        Manage restaurants, menus and QR codes
-      </p>
-    </div>
+        <div>
 
-    <div className="bg-white rounded-3xl shadow-lg px-6 py-4 flex items-center gap-4">
-      <div className="text-4xl">🏬</div>
+          <p className="text-blue-100 font-medium">
+            👋 Welcome Back
+          </p>
 
-      <div>
-        <p className="text-sm text-gray-500">
-          Total Restaurants
-        </p>
+          <h1 className="text-4xl font-bold mt-2">
+            Super Admin
+          </h1>
 
-        <p className="text-2xl font-bold">
-          {restaurants.length}
-        </p>
+          <p className="text-blue-100 mt-2">
+            Manage restaurants, menus, QR codes and orders.
+          </p>
 
-        <p className="text-green-600 text-sm font-semibold">
-          Active Restaurants
-        </p>
+        </div>
+
+        <div className="bg-white/20 backdrop-blur-lg rounded-3xl px-6 py-5">
+
+          <p className="text-blue-100">
+            Total Restaurants
+          </p>
+
+          <h2 className="text-4xl font-bold mt-2">
+            {restaurants.length}
+          </h2>
+
+          <p className="text-green-200 mt-1">
+            Active Businesses
+          </p>
+
+        </div>
+
       </div>
+
     </div>
 
   </div>
-</div>
 
-    {/* ACTION BAR */}
-    <div className="flex gap-3 mb-6">
-     <button
-  onClick={() => (window.location.href = "/admin/restaurants")}
-  className="bg-blue-600 text-white px-5 py-2 rounded-xl shadow"
->
-  Manage Restaurants
-</button>
+  <div className="max-w-7xl mx-auto px-4 py-6">
+
+    {/* Action Bar */}
+
+    <div className="flex flex-col md:flex-row gap-4 mb-6">
+
+      <button
+        onClick={() => (window.location.href = "/admin/restaurants")}
+        className="bg-blue-600 hover:bg-blue-700 transition text-white rounded-2xl px-6 py-3 font-semibold shadow-lg"
+      >
+        + Manage Restaurants
+      </button>
 
       <input
         placeholder="Search restaurants..."
-        className="flex-1 px-4 py-2 border rounded-xl"
+        className="flex-1 bg-white rounded-2xl border border-slate-200 px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
       />
+
     </div>
 
-    {/* STATS */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    {/* Stats */}
 
-      <div className="bg-white p-4 rounded-xl shadow">
-        <p className="text-gray-500 text-sm">Total</p>
-        <p className="text-xl font-bold">{restaurants.length}</p>
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
+
+      <div className="bg-white rounded-3xl shadow p-5">
+
+        <p className="text-slate-500">
+          Restaurants
+        </p>
+
+        <h2 className="text-3xl font-bold mt-2">
+          {restaurants.length}
+        </h2>
+
       </div>
 
-      <div className="bg-white p-4 rounded-xl shadow">
-        <p className="text-gray-500 text-sm">Active</p>
-        <p className="text-xl font-bold text-green-600">
+      <div className="bg-green-50 rounded-3xl shadow p-5">
+
+        <p className="text-green-700">
+          Active
+        </p>
+
+        <h2 className="text-3xl font-bold mt-2 text-green-700">
           {restaurants.filter(r => r.is_active).length}
+        </h2>
+
+      </div>
+
+      <div className="bg-yellow-50 rounded-3xl shadow p-5">
+
+        <p className="text-yellow-700">
+          Pending
         </p>
+
+        <h2 className="text-3xl font-bold mt-2 text-yellow-700">
+          0
+        </h2>
+
       </div>
 
-      <div className="bg-white p-4 rounded-xl shadow">
-        <p className="text-gray-500 text-sm">Pending</p>
-        <p className="text-xl font-bold text-yellow-500">0</p>
-      </div>
+      <div className="bg-red-50 rounded-3xl shadow p-5">
 
-      <div className="bg-white p-4 rounded-xl shadow">
-        <p className="text-gray-500 text-sm">Inactive</p>
-        <p className="text-xl font-bold text-red-500">
+        <p className="text-red-700">
+          Inactive
+        </p>
+
+        <h2 className="text-3xl font-bold mt-2 text-red-700">
           {restaurants.filter(r => !r.is_active).length}
-        </p>
+        </h2>
+
       </div>
 
     </div>
