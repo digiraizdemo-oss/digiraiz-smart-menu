@@ -142,53 +142,187 @@ const handleLogout = async () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 pb-20">
 
-      {/* HEADER */}
-      <div className="bg-white p-4 flex justify-between items-center shadow-sm rounded-xl mb-4">
-        <div className="flex items-center gap-3">
-          <img
-            src={restaurant?.logo_url || "/logo.png"}
-            className="w-12 h-12 rounded-xl object-cover border"
-          />
-          <div>
-            <h1 className="font-bold text-lg">
-              {restaurant?.name || "Restaurant"}
-            </h1>
-            <p className="text-sm text-green-500">● Online</p>
-          </div>
+     {/* HEADER */}
+
+<div className="bg-white rounded-3xl shadow-lg p-5 mb-5">
+
+  <div className="flex items-center justify-between">
+
+    <div className="flex items-center gap-4">
+
+      <img
+        src={restaurant?.logo_url || "/logo.png"}
+        className="w-16 h-16 rounded-2xl object-cover border"
+      />
+
+      <div>
+
+        <h1 className="text-xl font-bold">
+          {restaurant?.name || "Restaurant"}
+        </h1>
+
+        <div className="flex items-center gap-2 mt-1">
+
+          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+
+          <span className="text-green-600 text-sm font-medium">
+            Restaurant Open
+          </span>
+
         </div>
 
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded-xl"
-        >
-          Logout
-        </button>
       </div>
 
-      {/* PREMIUM HERO */}
-<div className="bg-gradient-to-r from-blue-500 to-green-500 rounded-2xl p-5 text-white mb-4 flex justify-between items-center">
-  <div>
-    <h2 className="text-lg font-semibold">Here's what's happening with your restaurant</h2>
-    <p className="text-sm opacity-90">
-      Here's what's happening with your restaurant
-    </p>
+    </div>
+
+    <button
+      onClick={handleLogout}
+      className="bg-red-50 text-red-600 px-4 py-2 rounded-xl font-medium hover:bg-red-100"
+    >
+      Logout
+    </button>
+
   </div>
-  <div className="text-4xl">🏪</div>
+
+</div>
+{/* BUSINESS STATUS */}
+
+<div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl text-white p-6 mb-6">
+
+  <p className="text-blue-100">
+
+    Today's Business
+
+  </p>
+
+  <h2 className="text-3xl font-bold mt-2">
+
+    ₹{revenue}
+
+  </h2>
+
+  <div className="grid grid-cols-3 gap-5 mt-6">
+
+    <div>
+
+      <p className="text-blue-100 text-sm">
+
+        Orders
+
+      </p>
+
+      <p className="text-2xl font-bold">
+
+        {totalOrders}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p className="text-blue-100 text-sm">
+
+        Pending
+
+      </p>
+
+      <p className="text-2xl font-bold">
+
+        {pending}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p className="text-blue-100 text-sm">
+
+        Preparing
+
+      </p>
+
+      <p className="text-2xl font-bold">
+
+        {preparing}
+
+      </p>
+
+    </div>
+
+  </div>
+
 </div>
 
-    {/* PREMIUM STATS */}
-<div className="bg-white rounded-3xl p-5 shadow-lg">
-  <div className="flex items-center justify-between">
-    <div>
-      <p className="text-sm text-gray-500">Total Orders</p>
-      <h2 className="text-3xl font-bold mt-1">{totalOrders}</h2>
-      <p className="text-green-600 text-xs mt-2">↑ Today</p>
-    </div>
+   {/* SUMMARY */}
 
-    <div className="h-14 w-14 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl">
-      📦
-    </div>
-  </div>
+<div className="grid grid-cols-2 gap-4 mb-6">
+
+<div className="bg-white rounded-3xl p-5 shadow">
+
+<div className="text-3xl">
+📦
+</div>
+
+<p className="text-gray-500 mt-3">
+Orders
+</p>
+
+<h2 className="text-3xl font-bold">
+{totalOrders}
+</h2>
+
+</div>
+
+<div className="bg-white rounded-3xl p-5 shadow">
+
+<div className="text-3xl">
+💰
+</div>
+
+<p className="text-gray-500 mt-3">
+Revenue
+</p>
+
+<h2 className="text-3xl font-bold">
+₹{revenue}
+</h2>
+
+</div>
+
+<div className="bg-white rounded-3xl p-5 shadow">
+
+<div className="text-3xl">
+🕒
+</div>
+
+<p className="text-gray-500 mt-3">
+Pending
+</p>
+
+<h2 className="text-3xl font-bold">
+{pending}
+</h2>
+
+</div>
+
+<div className="bg-white rounded-3xl p-5 shadow">
+
+<div className="text-3xl">
+👨‍🍳
+</div>
+
+<p className="text-gray-500 mt-3">
+Preparing
+</p>
+
+<h2 className="text-3xl font-bold">
+{preparing}
+</h2>
+
+</div>
+
 </div>
 
    {/* LIVE ORDERS */}
