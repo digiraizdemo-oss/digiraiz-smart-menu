@@ -147,6 +147,7 @@ return (
     </div>
 
     {/* LIST */}
+
     <div className="space-y-5">
       {restaurants.map((r) => (
         <div
@@ -230,6 +231,7 @@ return (
       ))}
     </div>
 
+  </div>
   </div>
 )
 }
