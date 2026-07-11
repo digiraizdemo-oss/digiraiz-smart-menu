@@ -478,7 +478,7 @@ Preparing
 
 </div>  
 {/* POWERED */}
-<div className="fixed bottom-14 left-0 right-0 text-center opacity-70">
+<div className="text-center py-6 opacity-70">
   <p className="text-xs text-gray-500">
     Powered by{" "}
     <span className="font-semibold text-black">DigiRaiz</span>
