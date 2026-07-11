@@ -291,7 +291,7 @@ if (plan === "DASHBOARD") {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Restaurants</h1>
+         <h1 className="text-2xl md:text-3xl font-bold">Restaurants</h1>
           <p className="text-muted-foreground">Manage your restaurant listings</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={(open) => {
@@ -304,7 +304,7 @@ if (plan === "DASHBOARD") {
               Add Restaurant
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl">
             <DialogHeader>
               <DialogTitle>{editingId ? "Edit Restaurant" : "Add New Restaurant"}</DialogTitle>
               <DialogDescription>
@@ -477,7 +477,7 @@ if (plan === "DASHBOARD") {
 
       {/* Restaurant Cards */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
           {[1, 2, 3].map((i) => (
             <Card key={i} className="animate-pulse border-0 shadow-lg">
               <CardContent className="p-6">
@@ -511,7 +511,7 @@ if (plan === "DASHBOARD") {
             <Card key={restaurant.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
               <CardContent className="p-0">
                 {/* Banner */}
-                <div className="h-24 bg-gradient-to-r from-primary/20 to-secondary/20 relative">
+                <div className="h-28 sm:h-32 bg-gradient-to-r from-primary/20 to-secondary/20 relative">
                   {restaurant.banner_url && (
                     <img
                       src={restaurant.banner_url}
@@ -531,7 +531,7 @@ if (plan === "DASHBOARD") {
                 {/* Content */}
                 <div className="p-4 -mt-8 relative">
                   {/* Logo */}
-                  <div className="w-16 h-16 rounded-xl bg-card shadow-lg flex items-center justify-center overflow-hidden border-2 border-card mb-3">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-card shadow-lg ...">
                     {restaurant.logo_url ? (
                       <img
                         src={restaurant.logo_url}
@@ -563,7 +563,7 @@ if (plan === "DASHBOARD") {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2">
+                 <div className="flex flex-wrap gap-2 mt-4">
                     <Button asChild variant="outline" size="sm" className="flex-1">
                       <Link href={`/menu/${restaurant.id}`} target="_blank">
                         <Eye className="w-4 h-4 mr-1" />
