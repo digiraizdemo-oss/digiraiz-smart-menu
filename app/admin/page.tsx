@@ -146,92 +146,171 @@ return (
 
     </div>
 
-    {/* LIST */}
+   {/* LIST */}
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-    <div className="space-y-5">
-      {restaurants.map((r) => (
-        <div
-          key={r.id}
-          className="bg-white rounded-2xl shadow p-4 flex gap-4"
-        >
+{restaurants.map((r) => (
 
-          {/* IMAGE */}
-         <div className="relative w-28 h-28">
+<div
+key={r.id}
+className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
+>
 
-  {/* Banner */}
-  <img
-    src={r.banner_url || "https://via.placeholder.com/300"}
-    className="w-full h-full object-cover rounded-xl"
-  />
+{/* Banner */}
 
-  {/* Logo */}
-  <img
-    src={r.logo_url || "https://via.placeholder.com/80"}
-    className="w-12 h-12 rounded-xl absolute bottom-0 left-0 translate-y-1/2 border bg-white p-1"
-  />
+<div className="relative h-44">
+
+<img
+src={r.banner_url || "https://via.placeholder.com/900x400"}
+className="w-full h-full object-cover"
+/>
+
+<button className="absolute top-4 right-4 bg-white rounded-full p-2 shadow">
+
+<div
+className={`w-4 h-4 rounded-full ${
+r.is_active ? "bg-green-500" : "bg-red-500"
+}`}
+/>
+
+</button>
 
 </div>
 
-          {/* INFO */}
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
-              <span className={`text-xs px-2 py-1 rounded-full ${
-                r.is_active
-                  ? "bg-green-100 text-green-600"
-                  : "bg-red-100 text-red-600"
-              }`}>
-                {r.is_active ? "Active" : "Inactive"}
-              </span>
-            </div>
+{/* Body */}
 
-            <p className="font-bold text-lg">{r.name}</p>
+<div className="relative px-6 pb-6">
 
-            <p className="text-sm text-gray-500">{r.phone}</p>
-            <p className="text-sm text-gray-500">{r.address}</p>
+{/* Logo */}
 
-            {/* STATS */}
-            <div className="flex gap-4 mt-3 text-sm">
-              <span className="bg-gray-100 px-3 py-1 rounded">
-                📦 {r.total_orders || 0} Orders
-              </span>
-              <span className="bg-gray-100 px-3 py-1 rounded">
-                ⭐ {r.rating || 0}
-              </span>
-              <span className="bg-gray-100 px-3 py-1 rounded">
-                📋 {r.total_items || 0}
-              </span>
-            </div>
-          </div>
+<div className="-mt-10 mb-4">
 
-          {/* ACTIONS */}
-          <div className="flex flex-col gap-2">
-           <button
-  onClick={() => (window.location.href = `/menu/${r.id}`)}
-  className="border px-4 py-1 rounded-lg"
+<img
+src={r.logo_url || "https://via.placeholder.com/100"}
+className="w-20 h-20 rounded-2xl border-4 border-white shadow object-cover bg-white"
+/>
+
+</div>
+
+{/* Name */}
+
+<h2 className="text-2xl font-bold">
+{r.name}
+</h2>
+
+<p className="text-slate-500 mt-2">
+📍 {r.address}
+</p>
+
+<p className="text-slate-500 mt-1">
+📞 {r.phone}
+</p>
+
+<div className="mt-4">
+
+<span
+className={`px-4 py-2 rounded-full text-sm font-semibold ${
+r.is_active
+? "bg-green-100 text-green-700"
+: "bg-red-100 text-red-700"
+}`}
 >
-  View Menu
+
+{r.is_active ? "🟢 Active" : "🔴 Inactive"}
+
+</span>
+
+</div>
+
+{/* Stats */}
+
+<div className="grid grid-cols-3 gap-3 mt-6">
+
+<div className="bg-slate-100 rounded-xl py-3 text-center">
+
+<div className="text-lg">📦</div>
+
+<p className="font-bold">
+{r.total_orders || 0}
+</p>
+
+<p className="text-xs text-slate-500">
+Orders
+</p>
+
+</div>
+
+<div className="bg-slate-100 rounded-xl py-3 text-center">
+
+<div className="text-lg">⭐</div>
+
+<p className="font-bold">
+{r.rating || 0}
+</p>
+
+<p className="text-xs text-slate-500">
+Rating
+</p>
+
+</div>
+
+<div className="bg-slate-100 rounded-xl py-3 text-center">
+
+<div className="text-lg">🍽️</div>
+
+<p className="font-bold">
+{r.total_items || 0}
+</p>
+
+<p className="text-xs text-slate-500">
+Items
+</p>
+
+</div>
+
+</div>
+
+{/* Buttons */}
+
+<div className="grid grid-cols-3 gap-3 mt-6">
+
+<button
+onClick={() => (window.location.href = `/menu/${r.id}`)}
+className="border rounded-xl py-3 hover:bg-slate-100 transition"
+>
+
+👁 Menu
+
 </button>
 
-          <button
-  onClick={() => (window.location.href = `/admin/restaurants/edit/${r.id}`)}
-  className="border px-4 py-1 rounded-lg"
+<button
+onClick={() => (window.location.href = `/admin/restaurants/edit/${r.id}`)}
+className="border rounded-xl py-3 hover:bg-slate-100 transition"
 >
-  Edit
+
+✏ Edit
+
 </button>
 
-            <button
-              onClick={() => deleteRestaurant(r.id)}
-              className="bg-red-500 text-white px-4 py-1 rounded-lg"
-            >
-              Delete
-            </button>
-          </div>
+<button
+onClick={() => deleteRestaurant(r.id)}
+className="bg-red-500 hover:bg-red-600 text-white rounded-xl py-3 transition"
+>
 
-        </div>
-      ))}
-    </div>
+🗑 Delete
 
-  </div>
-  </div>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+))}
+
+</div>
+</div>
+</div>
 )
 }
