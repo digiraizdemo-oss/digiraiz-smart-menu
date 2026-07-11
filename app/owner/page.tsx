@@ -485,6 +485,94 @@ Preparing
   </p>
 </div>
 
+{/* ORDER DETAILS POPUP */}
+
+{showOrderPopup && selectedOrder && (
+
+<div className="fixed inset-0 bg-black/50 z-50 flex items-end justify-center">
+
+  <div className="bg-white w-full max-w-md rounded-t-3xl p-6 animate-slide-up">
+
+    <div className="flex justify-between items-center mb-5">
+
+      <h2 className="text-xl font-bold">
+        Order Details
+      </h2>
+
+      <button
+        onClick={() => setShowOrderPopup(false)}
+        className="text-gray-500 text-2xl"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div className="space-y-4">
+
+      <div>
+
+        <p className="text-gray-500 text-sm">
+          Customer
+        </p>
+
+        <p className="font-semibold">
+          {selectedOrder.customer_name || "Guest"}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p className="text-gray-500 text-sm">
+          Table
+        </p>
+
+        <p className="font-semibold">
+          {selectedOrder.table_number || "-"}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p className="text-gray-500 text-sm">
+          Total Amount
+        </p>
+
+        <p className="text-2xl font-bold text-blue-600">
+          ₹{selectedOrder.total_price}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p className="text-gray-500 text-sm">
+          Status
+        </p>
+
+        <span className="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+          {selectedOrder.status}
+        </span>
+
+      </div>
+
+      <button
+        onClick={() => setShowOrderPopup(false)}
+        className="w-full bg-blue-600 text-white rounded-xl py-3 font-semibold mt-4"
+      >
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+)}
+
 </div>
 )
 }
