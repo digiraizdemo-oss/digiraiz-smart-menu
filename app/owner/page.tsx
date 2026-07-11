@@ -325,79 +325,95 @@ Preparing
 
 </div>
 
-   {/* LIVE ORDERS */}
-<div className="bg-white rounded-2xl shadow-md p-4">
+  {/* LIVE ORDERS */}
 
-  {/* HEADER */}
-  <div className="flex justify-between items-center mb-3">
-    <h2 className="font-semibold text-lg">Live Orders</h2>
-    <span className="text-sm text-red-500 font-medium">
-      {orders.length} New Orders
-    </span>
+<div className="bg-white rounded-3xl shadow-lg p-5 mb-6">
+
+  <div className="flex justify-between items-center mb-5">
+
+    <div>
+      <h2 className="text-xl font-bold">
+        Live Orders
+      </h2>
+
+      <p className="text-gray-500 text-sm">
+        Manage incoming customer orders
+      </p>
+    </div>
+
+    <div className="bg-red-100 text-red-600 px-4 py-2 rounded-full font-semibold text-sm">
+      {orders.length} Orders
+    </div>
+
   </div>
 
-  {/* ORDERS LIST */}
-  <div className="space-y-3">
+  <div className="space-y-4">
+
+    {orders.length === 0 && (
+      <div className="text-center py-10 text-gray-400">
+        🍽️ No Orders Yet
+      </div>
+    )}
 
     {orders.map((order) => (
+
       <div
         key={order.id}
-        className="border rounded-xl p-3 flex justify-between items-center bg-gray-50"
+        className="border border-gray-200 rounded-2xl p-4 hover:shadow-md transition"
       >
 
-        {/* LEFT SIDE */}
-        <div>
-          <p className="font-medium text-sm">
-            {order.customer_name || "Guest"}
-          </p>
-          <p className="text-xs text-gray-500">
-            Table {order.table_number}
-          </p>
-        </div>
+        <div className="flex justify-between items-start">
 
-        {/* CENTER */}
-        <div className="text-center">
-          <p className="font-semibold">₹{order.total_price}</p>
+          <div>
 
-          {/* STATUS BADGE */}
+            <h3 className="font-bold text-lg">
+              {order.customer_name || "Guest"}
+            </h3>
+
+            <p className="text-sm text-gray-500 mt-1">
+              Table {order.table_number || "-"}
+            </p>
+
+            <p className="font-semibold text-blue-600 mt-3">
+              ₹{order.total_price}
+            </p>
+
+          </div>
+
           <span
-            className={`text-xs px-2 py-1 rounded-full ${
+            className={`px-3 py-1 rounded-full text-xs font-semibold ${
               order.status === "pending"
-                ? "bg-yellow-100 text-yellow-600"
+                ? "bg-yellow-100 text-yellow-700"
                 : order.status === "bill_request"
-                ? "bg-blue-100 text-blue-600"
+                ? "bg-blue-100 text-blue-700"
                 : order.status === "waiter_call"
-                ? "bg-purple-100 text-purple-600"
-                : "bg-green-100 text-green-600"
+                ? "bg-purple-100 text-purple-700"
+                : "bg-green-100 text-green-700"
             }`}
           >
             {order.status.replace("_", " ")}
           </span>
+
         </div>
 
-        {/* RIGHT SIDE ACTION */}
-<div>
-  <button
-    onClick={() => {
-      setSelectedOrder(order)
-      setShowOrderPopup(true)
-    }}
-    className="text-blue-500 text-sm"
-  >
-    View →
-  </button>
-</div>
+        <div className="flex gap-3 mt-5">
+
+          <button
+            onClick={() => {
+              setSelectedOrder(order)
+              setShowOrderPopup(true)
+            }}
+            className="flex-1 bg-blue-600 text-white rounded-xl py-3 font-medium hover:bg-blue-700 transition"
+          >
+            View Details
+          </button>
+
+        </div>
 
       </div>
+
     ))}
 
-  </div>
-
-  {/* VIEW ALL */}
-  <div className="text-center mt-4">
-    <button className="text-blue-500 text-sm font-medium">
-      View All Orders →
-    </button>
   </div>
 
 </div>
