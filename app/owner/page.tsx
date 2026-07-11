@@ -420,7 +420,10 @@ Preparing
 {/* QUICK ACTIONS */}
 <div className="grid grid-cols-2 gap-4">
 
-  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+ <button
+  onClick={() => window.location.href = "/owner/menu"}
+  className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1"
+>
     <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl mb-4">
       🍔
     </div>
@@ -434,7 +437,10 @@ Preparing
     </p>
   </button>
 
-  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+  <button
+  onClick={() => window.location.href = "/owner/orders"}
+  className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1"
+>
     <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-4">
       📋
     </div>
@@ -448,7 +454,10 @@ Preparing
     </p>
   </button>
 
-  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+  <button
+  onClick={() => window.location.href = "/owner/reports"}
+  className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1"
+>
     <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-2xl mb-4">
       📈
     </div>
@@ -462,7 +471,10 @@ Preparing
     </p>
   </button>
 
-  <button className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1">
+ <button
+  onClick={() => window.location.href = "/owner/settings"}
+  className="bg-white rounded-3xl shadow-lg p-5 text-left transition hover:shadow-xl hover:-translate-y-1"
+>
     <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center text-2xl mb-4">
       ⚙️
     </div>
